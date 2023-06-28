@@ -1,7 +1,6 @@
 name: Python application
 
 on:
-  workflow_dispatch:
   workflow_run:
     workflows: ["python-app.yml"]
     types:
