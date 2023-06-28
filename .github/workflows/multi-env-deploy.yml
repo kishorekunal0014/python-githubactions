@@ -1,0 +1,36 @@
+name: Python application
+
+on:
+  workflow_dispatch:
+jobs:
+  Dev:
+    runs-on: ubuntu-latest
+    environment: Dev
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run a Script
+      run: |
+        echo "Running Dev env jobs"
+  UAT:
+    runs-on: ubuntu-latest
+    environment: UAT
+    needs: Dev
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run a Script
+      run: |
+        echo "Running UAT  env jobs"
+  Prod:
+    runs-on: ubuntu-latest
+    environment: Prod
+    needs: UAT
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run a Script
+      run: |
+        echo "Running Prod env jobs"
+
+
+
+
+
